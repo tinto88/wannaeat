@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+        WannaEat
+    </title>
+    </meta>
+    </meta>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+    </script>
+    </link>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    button>img {
+        height: 77px;
+    }
+
+    body {
+        padding: 1em;
+        background: #666;
+        font-family: 'Comfortaa', cursive;
+    }
+
+    mobile {
+        display: flex;
+        flex-flow: column nowrap;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%), url(https://i.pinimg.com/originals/61/aa/50/61aa501ccc526feea25c1f05ad6afde9.png);
+        margin: auto;
+        width: 414px;
+        height: 736px;
+        box-shadow: 0px 12px 24px #0004;
+    }
+
+    .mobile-status-bar img {
+        width: 100%;
+    }
+
+    .mobile-container {
+        height: 100%;
+        overflow: auto;
+    }
+
+    .page {
+        padding: 1em;
+    }
+
+    input {
+        width: 80%;
+        border-radius: .3em;
+        font-size: 1rem;
+        padding: 1em .5em;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        margin-bottom: 1em;
+
+    }
+
+    .logo {
+        font-size: 60px;
+        margin-top: 40%;
+        color: #1f1b1b;
+    }
+
+    .f-btn {
+        width: 20%;
+        margin-top: 10%;
+    }
+
+    .bt-C {
+        width: 100%;
+        margin-bottom: 5%;
+
+    }
+
+    .text-C {
+        margin-top: 15%;
+        margin-bottom: 15%;
+
+    }
+
+    .textsec {
+        font-size: 25px;
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+
+    #result {
+        text-align: center;
+        font-size: 30px;
+        margin-top: 40%;
+        margin-bottom: 40%;
+    }
+
+    #page-meat,
+    #page-category,
+    #page-random {
+        display: none;
+    }
+
+    .logo>img {
+        height: 125px;
+    }
+
+    /* part 2 */
+
+    .container {
+        background: rgba(0, 0, 0, .4) url(http://re3ker.de/raffle/images/metal.jpg) 50% 50% no-repeat;
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        height: 100%;
+    }
+
+    .topbox {
+        opacity: 0.7;
+        background: white;
+        padding-bottom: 50px;
+        background: #0f161d;
+        /* Old browsers */
+        background: -moz-linear-gradient(left, #0f161d 0%, #131b24 51%, #0f161d 100%);
+        /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%, #0f161d), color-stop(51%, #131b24), color-stop(100%, #0f161d));
+        /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left, #0f161d 0%, #131b24 51%, #0f161d 100%);
+        /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left, #0f161d 0%, #131b24 51%, #0f161d 100%);
+        /* Opera 11.10+ */
+        background: -ms-linear-gradient(left, #0f161d 0%, #131b24 51%, #0f161d 100%);
+
+        /* IE10+ */
+        background: linear-gradient(to right, #ffc107 0%, #ffd24b 51%, #ffc107 100%);
+
+        /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0f161d', endColorstr='#0f161d', GradientType=1);
+        /* IE6-9 */
+        box-shadow: 0 0 10px 0 black;
+    }
+
+    .rollbox {
+
+        margin-top: 50px;
+        height: 200px;
+        background: #000;
+        border: 1px solid #616161;
+        overflow-x: auto;
+        overflow: hidden;
+        position: relative;
+        padding: 0;
+
+    }
+
+    .rollbox>table {
+        width: auto;
+        height: 200px;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    #loadout {
+
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        z-index: 1;
+        background: #121619;
+    }
+
+    .roller {
+        font-family: 'Mali', cursive;
+        position: relative;
+        display: block;
+        height: 100%;
+        text-align: center;
+        color: white;
+        line-height: 180px;
+        font-size: 0.8em;
+        /* font-weight: bold;
+        font-family: sans-serif; */
+    }
+
+    .roller div {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+
+    }
+
+    .inputbox {
+        background: #212121;
+        box-shadow: inset 0 0 7px 0 black;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: white;
+    }
+
+    .badge {
+        padding-top: 5px;
+        /* text-shadow: 1px 1px 1px black; */
+        margin-bottom: 20px;
+
+    }
+
+    .line {
+        width: 2px;
+        height: 198px;
+        top: 1px;
+        left: 50%;
+        position: absolute;
+        background: rgb(255, 10, 10);
+        opacity: 0.6;
+        z-index: 2;
+
+    }
+
+    #log {
+        font-family: 'Mali', cursive;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 1.5em;
+        /* color: rgb(247, 214, 30); */
+        font-weight: bold;
+
+    }
+
+    #log h1 {
+        /* font-size: 2em; */
+        color: black;
+
+    }
+
+    #roll {
+        margin-top: 30px;
+    }
+
+    .roller {
+        height: 180px;
+        width: 180px;
+        margin-right: 10px;
+        box-shadow: 0 0 5px 0 black;
+        background: url(http://re3ker.de/raffle/images/purple.jpg);
+    }
+
+    tr,
+    table,
+    td {
+        margin: 0;
+        padding: 0;
+    }
+
+    td:nth-child(even) .roller {
+        background: url(http://re3ker.de/raffle/images/blue.jpg);
+    }
+
+    .st-btn {
+        height: 66px;
+    }
+
+    .st-btn:hover {
+        opacity: 0.7;
+    }
+
+    input[type="number"]::placeholder,
+    input[type="number"] {
+        text-align: center;
+        color: #1f1b1b;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 600;
+    }
+
+    .btn {
+        color: #1f1b1b !important;
+        font-weight: 600;
+    }
+</style>
+
+<body>
+    <mobile>
+        <div class="mobile-status-bar">
+            <img alt="" src="https://i.imgur.com/XSqz2K4.png">
+            </img>
+        </div>
+        <div class="mobile-container">
+            <div class="page text-center" id="page-start">
+                <h1 class="logo">
+                    <img src="https://image.flaticon.com/icons/png/512/1400/1400241.png" alt="">
+                    <br>
+                    wanna eat
+                </h1>
+                <h5>Ladkrabang</h5>
+                <!-- <h4 class="textsec">
+                    Insert Money
+                </h4> -->
+                <!-- <button class="f-btn btn btn-warning text-white btn-rounded"
+                    onclick="mockupClick('page-start','page-category')">
+                    START
+                </button> -->
+                <br>
+
+                <input type="number" placeholder="Insert money &#128176" id="money" required="true">
+                <br>
+                <br>
+                <img class="st-btn" src="https://image.flaticon.com/icons/png/512/702/702132.png" alt=""
+                    onclick="mockupClick('page-start','page-category')">
+
+                <h1>ADD MORE</h1>
+                <input type="text" id="nameRes" placeholder="Food Name">
+                <input type="text" id="places" placeholder="Place">
+                <input type="number" id="prices" placeholder="Price">
+                <select id="type">
+                    <option value="rice">Rice</option>
+                    <option value="noodle">Noodle</option>
+                    <option value="special">Special</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="all">Other</option>
+                </select>
+                <button onclick="upload()">Add</button>
+            </div>
+            <div class="page" id="page-category">
+                <h2 class="text-C text-center">
+                    Select Category
+                </h2>
+                <div class="row ">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-category','page-meat')" type="button">
+                            <img src="https://image.flaticon.com/icons/svg/857/857681.svg" alt="">
+                            <br>
+                            Main dish
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-category','page-random'),start('dessert')" type="button">
+                            <img src="https://image.flaticon.com/icons/svg/2965/2965574.svg" alt="">
+                            <br>
+                            Dessert
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-category','page-random'),start('special')" type="button">
+                            <img src="https://image.flaticon.com/icons/png/512/931/931898.png" alt="">
+                            <br>
+                            Only For The Drunk
+                        </button>
+                    </div>
+                </div>
+                </br>
+                </br>
+            </div>
+            <div class="page" id="page-meat">
+                <h2 class="text-C text-center">
+                    Select Category
+                </h2>
+                <div class="row ">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-meat','page-random'),start('rice')" type="button">
+                            <img src="https://image.flaticon.com/icons/svg/890/890014.svg" alt="">
+                            <br>
+                            Rice
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-meat','page-random'),start('noodle')" type="button">
+                            <img src="https://image.flaticon.com/icons/svg/2836/2836619.svg" alt="">
+                            <br>
+                            Noodle
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <button class="bt-C btn-lg text-light btn btn-warning"
+                            onclick="mockupClick('page-meat','page-random'),start('all')" type="button">
+                            <img src="https://image.flaticon.com/icons/svg/857/857681.svg" alt="">
+                            <br>
+                            All
+                        </button>
+                    </div>
+                </div>
+                </br>
+                </br>
+            </div>
+            <div class="page" id="page-random">
+                <!-- <h2 id="result">
+                    . . .
+                </h2> -->
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row topbox">
+                        <div class="col rollbox">
+                            <div class="line"></div>
+                            <table>
+                                <tr id="loadout">
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12" style="text-align:center">
+                            <div id=""></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <button class="bt-C btn-lg text-light btn btn-danger" id="select">
+                    RANDOM
+                </button> -->
+                <button id="roll" class="bt-C btn-lg text-light btn btn-danger"
+                    style="color:cornsilk !important;">Random</button>
+                <!-- <button class="bt-C btn-lg text-light btn btn-info disabled" id="select">
+                    NAVIGATE
+                </button> -->
+                <button class="bt-C btn-lg text-light btn btn-warning" 
+                    onclick="reset(),mockupClick('page-random','page-category',)">
+                    Select New Category
+                </button>
+                <button class="bt-C btn-lg text-light btn btn-warning" 
+                    onclick="reset(),mockupClick('page-random','page-start',)">
+                    Home
+                </button>
+            </div>
+        </div>
+    </mobile>
+
+
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="log">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    <button id="rollmore" data-dismiss="modal" class="bt-C btn-lg text-light btn btn-danger"
+                        style="color:cornsilk !important;">Random Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAc2bykx7QXr0Y6_AD2K9naCDzPJrAw154",
+        authDomain: "wannaeat-4698b.firebaseapp.com",
+        databaseURL: "https://wannaeat-4698b.firebaseio.com",
+        projectId: "wannaeat-4698b",
+        storageBucket: "wannaeat-4698b.appspot.com",
+        messagingSenderId: "187008201722",
+        appId: "1:187008201722:web:04e5ee6443fe5b48706a43"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    function upload() {
+        var nameRes = document.getElementById('nameRes').value;
+        var places = document.getElementById('places').value;
+        var prices = document.getElementById('prices').value;
+        var type = document.getElementById('type').value;
+        db.collection("store").add({
+            nameRes: nameRes,
+            place: places,
+            price: Number(prices),
+            type: type
+        });
+    }
+</script>
+
+<script>
+    // var text = [
+    //     // "กระเพราไก่ The Junx 30 ฿",
+    //     // "ผัดมาม่า บิลเลี่ยน 50 ฿",
+    //     // "สเต็กไก่สไปซี่ 95 ฿",
+    //     // "Paradox",
+    //     // "Friend Zone",
+    //     // "สเต็กไก่ ซอสเห็ด 95 ฿",
+    //     // "มาม่าหมูสับ 5 ฿",
+    //     // "ข้าวหมูแดง 35 ฿",
+    //     // "กระเพราหมูสับ The Junx 30 ฿",
+    //     // "กระเพราเนื้อ The Junx 30 ฿",
+    //     // "กระเพรากุ้ง The Junx 30 ฿", 
+    // ];
+    // var prices = [];
+    // var places = [];
+    // var money = 0;
+    // var dat;
+    // function start() {
+    //     money = document.getElementById("money").value;
+    //     console.log(money);
+    //     db.collection('store').get().then(snapshot => {
+    //         snapshot.forEach(doc => {
+
+    //             dat = doc.data().nameRes
+    //             pr = doc.data().price
+    //             pl = doc.data().place
+    //             if (pr <= money){
+    //                 text.push(dat);
+    //                 prices.push(pr);
+    //                 places.push(pl);
+    //             }
+    //             console.log(text)
+    //             console.log(places)
+    //         });
+    //     });
+    // }
+    function mockupClick(pageToHide, pageToShow) {
+
+        document.querySelector('#' + pageToHide).style.display = "none"; document.querySelector('#' + pageToShow).style.display = "block";
+    }
+    $('#rollmore').click(function () {
+        $("#roll").click();
+    })
+
+    // function selectnew() {
+    //     document.getElementById("result").innerHTML = ". . .";
+    // }
+    // document.getElementById("select").onclick = function () {
+    //     var ran = Math.floor(Math.random() * text.length)
+    //     document.getElementById("result").innerHTML = text[ran] +"<br>"+" "+ places[ran] + " " + prices[ran].toString() + " ฿";
+    // }
+
+
+
+</script>
+
+<script>
+    //ข้อมูลอาหาร
+    var text = [];
+    var prices = [];
+    var places = [];
+    var dat;
+    function start(foodtype) {
+        money = Number(document.getElementById("money").value);
+        console.log(money);
+        console.log(foodtype)
+        db.collection('store').get().then(snapshot => {
+            snapshot.forEach(doc => {
+                dat = doc.data().nameRes
+                pr = doc.data().price
+                pl = doc.data().place
+                ty = doc.data().type
+                if (pr <= money) {
+                    if (foodtype == ty || ty == "none") {
+                        text.push(dat);
+                        prices.push(pr);
+                        places.push(pl);
+
+                    }
+                    if (foodtype == "all") {
+                        if (ty == "rice" || ty == "noodle") {
+                            text.push(dat);
+                            prices.push(pr);
+                            places.push(pl);
+                        }
+                    }
+
+
+
+                } else if (ty == "none") {
+                    text.push(dat);
+                    prices.push(pr);
+                    places.push(pl);
+                }
+
+            });
+            console.log(text)
+        });
+    }
+
+    function reset() {
+        while (text.length > 0) {
+            text.pop();
+        }
+        while (prices.length > 0) {
+            prices.pop();
+        }
+        while (places.length > 0) {
+            places.pop();
+        }
+        console.log("Reset")
+    }
+
+    //ตัวสุ่ม
+    $(document).ready(function () {
+        var users = [],
+            shuffled = [],
+            loadout = $("#loadout"),
+            insert_times = 30,
+            duration_time = 10000;
+        $("#roll").click(function () {
+            users = [];
+            // var lines = $('textarea').val().split('\n');
+            var lines = text;
+            if (lines.length < 2) {
+                $("#msgbox").slideToggle(100);
+                setTimeout(function () {
+                    $("#msgbox").slideToggle(100);
+                }, 3000);
+                return false;
+            }
+            for (var i = 0; i < lines.length; i++) {
+                if (lines[i].length > 0) {
+                    users.push(lines[i] + "\n" + places[i] + "\n" + prices[i] + " บาท");
+                }
+            }
+            $("#roll").attr("disabled", true);
+            var scrollsize = 0,
+                diff = 0;
+            $(loadout).html("");
+            $("#log").html("");
+            loadout.css("left", "100%");
+            if (users.length < 10) {
+                insert_times = 20;
+                duration_time = 5000;
+            } else {
+                insert_times = 10;
+                duration_time = 10000;
+            }
+            for (var times = 0; times < insert_times; times++) {
+                shuffled = users;
+                // shuffled.shuffle();
+                for (var i = 0; i < users.length; i++) {
+                    loadout.append('<td><div class="roller"><div>' + shuffled[i] + '</div></div></td>');
+                    scrollsize = scrollsize + 192;
+                }
+            }
+
+
+            diff = Math.round(scrollsize / 2);
+            diff = randomEx(diff - 300, diff + 300);
+            $("#loadout").animate({
+                left: "-=" + diff
+            }, duration_time, function () {
+                $("#roll").attr("disabled", false);
+                $('#loadout').children('td').each(function () {
+                    var center = window.innerWidth / 2;
+                    if ($(this).offset().left < center && $(this).offset().left + 185 > center) {
+                        var fitext = $(this).children().text().split('\n');
+                        console.log(fitext);
+                        console.log(diff);
+                        $("#log").append(fitext[0] + "<br><h1 class=\"badge\">" + "<br>" + fitext[1] + " ราคา " + fitext[2] + "</h1>");
+                        $("#myModal").modal();
+
+                    }
+
+                });
+            });
+        });
+        Array.prototype.shuffle = function () {
+            var counter = this.length, temp, index;
+            while (counter > 0) {
+                index = (Math.random() * counter--) | 0;
+                temp = this[counter];
+                this[counter] = this[index];
+                this[index] = temp;
+            }
+        }
+        function randomEx(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+    });
+
+</script>
+
+</html>
