@@ -20,6 +20,13 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/512/1400/1400241.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="https://image.flaticon.com/icons/png/512/1400/1400241.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://image.flaticon.com/icons/png/512/1400/1400241.png">
+    <link rel="apple-touch-icon" href="https://image.flaticon.com/icons/png/512/1400/1400241.png">
+    <meta name="apple-mobile-web-app-title" content="WannaEat">
 </head>
 <style>
     button>img {
@@ -35,6 +42,7 @@
     mobile {
         display: flex;
         flex-flow: column nowrap;
+
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 100%), url(https://i.pinimg.com/originals/61/aa/50/61aa501ccc526feea25c1f05ad6afde9.png);
         margin: auto;
         width: 414px;
@@ -337,8 +345,8 @@
                 </h2>
                 <div class="row ">
                     <div class="col">
-                        <button class="bt-C btn-lg text-light btn btn-warning"
-                            onclick="mockupClick('page-category','page-meat')" type="button">
+                        <button class="bt-C btn-lg text-light btn btn-warning" data-toggle="tooltip"
+                            title="Rice Noodle etc." onclick="mockupClick('page-category','page-meat')" type="button">
                             <img src="https://image.flaticon.com/icons/svg/857/857681.svg" alt="">
                             <br>
                             Main dish
@@ -348,7 +356,8 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <button class="bt-C btn-lg text-light btn btn-warning"
+                        <button class="bt-C btn-lg text-light btn btn-warning" data-toggle="tooltip"
+                            title="Dessert and Drink"
                             onclick="mockupClick('page-category','page-random'),start('dessert')" type="button">
                             <img src="https://image.flaticon.com/icons/svg/2965/2965574.svg" alt="">
                             <br>
@@ -359,8 +368,9 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <button class="bt-C btn-lg text-light btn btn-warning"
-                            onclick="mockupClick('page-category','page-random'),start('special')" type="button">
+                        <button class="bt-C btn-lg text-light btn btn-warning" data-toggle="tooltip"
+                            title="Alcoholic Only" onclick="mockupClick('page-category','page-random'),start('special')"
+                            type="button">
                             <img src="https://image.flaticon.com/icons/png/512/931/931898.png" alt="">
                             <br>
                             Only For The Drunk
@@ -398,11 +408,13 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <button class="bt-C btn-lg text-light btn btn-warning"
+                        <button class="bt-C btn-lg text-light btn btn-warning " data-toggle="tooltip"
+                            title="Appetizer Steak Buffet etc."
                             onclick="mockupClick('page-meat','page-random'),start('all')" type="button">
                             <img src="https://image.flaticon.com/icons/svg/857/857681.svg" alt="">
                             <br>
                             All
+
                         </button>
                     </div>
                 </div>
@@ -437,16 +449,16 @@
                 <!-- <button class="bt-C btn-lg text-light btn btn-danger" id="select">
                     RANDOM
                 </button> -->
-                <button id="roll" class="bt-C btn-lg text-light btn btn-danger"
-                    style="color:cornsilk !important;">Random</button>
+                <button id="roll" class="bt-C btn-lg text-light btn btn-danger" data-toggle="tooltip"
+                    title="Click to Random" style="color:cornsilk !important;">Random</button>
                 <!-- <button class="bt-C btn-lg text-light btn btn-info disabled" id="select">
                     NAVIGATE
                 </button> -->
-                <button class="bt-C btn-lg text-light btn btn-warning" 
+                <button class="bt-C btn-lg text-light btn btn-warning" data-toggle="tooltip" title="Select New Category"
                     onclick="reset(),mockupClick('page-random','page-category',)">
                     Select New Category
                 </button>
-                <button class="bt-C btn-lg text-light btn btn-warning" 
+                <button class="bt-C btn-lg text-light btn btn-warning"
                     onclick="reset(),mockupClick('page-random','page-start',)">
                     Home
                 </button>
@@ -560,7 +572,9 @@
     $('#rollmore').click(function () {
         $("#roll").click();
     })
-
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     // function selectnew() {
     //     document.getElementById("result").innerHTML = ". . .";
     // }
